@@ -115,7 +115,7 @@ include('../../app/controllers/reparaciones/mostrar_reparaciones.php');
                                             <div class="col-md-8">
                                                 <div class="form-group">
                                                     <label for="">Descripción de la falla:</label>
-                                                    <textarea name="falla" cols="30" rows="3" class="form-control" placeholder="Escriba la descripcion de la falla"></textarea>
+                                                    <textarea name="falla" cols="30" rows="3" class="form-control" value="<?php echo $fallarep?>" disabled></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">

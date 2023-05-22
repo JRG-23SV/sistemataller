@@ -15,6 +15,7 @@ foreach ($datos_reparaciones as $dato_reparaciones){
     $modelo = $dato_reparaciones['modelo_vehiculo'];
     $placa = $dato_reparaciones['placa_vehiculo'];
     $fecharep = $dato_reparaciones['fecha_ingreso'];
+    $fallarep = $dato_reparaciones['fallas'];
 }
 
 ?>
