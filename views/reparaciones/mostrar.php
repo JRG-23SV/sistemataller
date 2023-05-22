@@ -5,6 +5,7 @@ include('../../layout/sesion.php');
 include('../../layout/part1.php');
 
 include('../../app/controllers/reparaciones/consulta_clientes.php');
+include('../../app/controllers/reparaciones/mostrar_reparaciones.php');
 
 ?>
 <!-- Content Wrapper. Contains page content -->
@@ -14,7 +15,7 @@ include('../../app/controllers/reparaciones/consulta_clientes.php');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">FORMULARIO PARA AGREGAR CLIENTES</h1>
+                    <h1 class="m-0">VISUALIZANDO REPARACIONES</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -29,7 +30,7 @@ include('../../app/controllers/reparaciones/consulta_clientes.php');
                 <div class="col-md-9">
                     <div class="card card-primary" style="transition: all 0.15s ease 0s; height: inherit; width: inherit;">
                         <div class="card-header">
-                            <h3 class="card-title">Rellene los datos correctamente...</h3>
+                            <h3 class="card-title">Visualizando los datos...</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i>
@@ -39,15 +40,6 @@ include('../../app/controllers/reparaciones/consulta_clientes.php');
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body" style="display: block;">
-                            <div class="row">
-                                <h5> Datos de clientes </h5>
-                                <div style="width: 20px"></div>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-buscar_cliente">
-                                    <i class="fa fa-search"></i>
-                                    Buscar
-                                </button>
-                            </div>
-                            <hr>
 
                             <div class="row">
                                 <div class="col-md-12">
@@ -57,21 +49,21 @@ include('../../app/controllers/reparaciones/consulta_clientes.php');
                                                 <div class="form-group">
                                                     <input type="text" name="id_clientes" id="cliente_id" hidden>
                                                     <label for="">Cliente:</label>
-                                                    <input type="text" nombre="cliente" class="form-control" value="<?php echo $nombre?> <?php echo $apellido?>" disabled>
+                                                    <input type="text" name="cliente" class="form-control" value="<?php echo $nombre?> <?php echo $apellido?>" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="">Marca del Vehiculo:</label>
                                                     <div style="display: flex">
-                                                        <input type="text" nombre="marca" class="form-control" value="<?php echo $marcavehiculo?>" disabled>
+                                                        <input type="text" name="marca" class="form-control" value="<?php echo $marca?>" disabled>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="">Modelo del Vehiculo:</label>
-                                                    <input type="text" name="modelo" id="modelo" class="form-control" disabled>
+                                                    <input type="text" name="modelo" class="form-control" value="<?php echo $modelo?>" disabled>
                                                 </div>
                                             </div>
                                         </div>
@@ -80,13 +72,13 @@ include('../../app/controllers/reparaciones/consulta_clientes.php');
                                                 <div class="form-group">
                                                     <input type="text" id="id_producto" hidden>
                                                     <label for="">Placa del Vehiculo:</label>
-                                                    <input type="text" nombre="placa" class="form-control" id="placa" disabled>
+                                                    <input type="text" name="placa" class="form-control" value="<?php echo $placa?>" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="">Fecha:</label>
-                                                    <input type="date" class="form-control" name="fecha">
+                                                    <input type="date" class="form-control" name="fecha" value="<?php echo $fecharep?>" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
