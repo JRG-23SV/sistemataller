@@ -91,6 +91,8 @@ include ('../../app/controllers/reparaciones/consulta_clientes.php');
 
                  alert(id_cliente)
 
+                 // Mensaje de Jorge
+
                   
 
                   
