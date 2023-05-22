@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-05-2023 a las 08:04:57
+-- Tiempo de generación: 22-05-2023 a las 09:11:17
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -70,6 +70,19 @@ INSERT INTO `estado_rep` (`id_est`, `estado`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `pagos`
+--
+
+CREATE TABLE `pagos` (
+  `id_pagos` int(11) NOT NULL,
+  `id_rep` int(11) NOT NULL,
+  `reprealizada` varchar(255) NOT NULL,
+  `valorpago` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `reparaciones`
 --
 
@@ -77,8 +90,8 @@ CREATE TABLE `reparaciones` (
   `id_rep` int(11) NOT NULL,
   `id_clientes` int(11) NOT NULL,
   `fallas` varchar(255) NOT NULL,
-  `comprevisar` varchar(255) NOT NULL,
-  `presupuesto` int(11) NOT NULL,
+  `fecha_ingreso` date NOT NULL,
+  `imagen` text DEFAULT NULL,
   `estado_rep` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -86,10 +99,9 @@ CREATE TABLE `reparaciones` (
 -- Volcado de datos para la tabla `reparaciones`
 --
 
-INSERT INTO `reparaciones` (`id_rep`, `id_clientes`, `fallas`, `comprevisar`, `presupuesto`, `estado_rep`) VALUES
-(4, 5, 'No enfría el motor', 'Radiador', 100, 4),
-(5, 2, 'Volante no gira correctamente', 'Hidraulico', 100, 5),
-(6, 1, 'El motor tira el aceite', 'Aceite', 200, 6);
+INSERT INTO `reparaciones` (`id_rep`, `id_clientes`, `fallas`, `fecha_ingreso`, `imagen`, `estado_rep`) VALUES
+(13, 2, 'Le falta aceite y una limpiadita gg', '2023-05-22', '2023-05-22-12-23-50__carrochocado.jpg', 4),
+(14, 1, 'Se le calló el escape al señor', '2023-05-12', '2023-05-22-12-35-08__escaperoto.jpg', 4);
 
 -- --------------------------------------------------------
 
@@ -132,7 +144,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `username`, `password`, `correo`, `token`, `id_rol`, `fecha_creacion`, `fecha_actualizacion`) VALUES
-(6, 'manuel', '$2y$10$3C8tvBZ4UQ9jyE89olLsG.K9Mjf7LOKe4t9vEDBEr1vywr4O.MSpm', 'manuel@gmail.com', '', 1, '2023-04-09 23:12:11', '2023-05-02 21:01:46'),
+(6, 'manuel', '$2y$10$L9.5ZZJcABf2pclekEJ3d.1906RocPgAGK7kUrh2/o9hpeZux2GVC', 'manuel@gmail.com', '', 1, '2023-04-09 23:12:11', '2023-05-13 17:11:43'),
 (7, 'carlos', '$2y$10$YPyqPp6RBcwSffwnlgQxMuAl6pHYoC5yy0PXJWKOSDIXpHl4KPaPC', 'carlos@gmail.com', '', 2, '2023-04-09 23:32:02', '0000-00-00 00:00:00'),
 (16, 'fabian', '$2y$10$BGrWCIlpRgu.NFF4rivOtutHTFD1i.Ipjjl3p/WHsdS5gekNkAPh2', 'fabian@gmail.com', '', 2, '2023-04-11 16:17:05', '2023-05-02 21:02:05'),
 (17, 'natividad', '$2y$10$XrZoAx5RrcDNP2zSY2E5XuczJpzn1c7ZfQBuTSB0d/d3fehLIMqPu', 'natividad@gmail.com', '', 1, '2023-04-11 21:07:52', '0000-00-00 00:00:00'),
@@ -154,6 +166,12 @@ ALTER TABLE `cliente`
 --
 ALTER TABLE `estado_rep`
   ADD PRIMARY KEY (`id_est`);
+
+--
+-- Indices de la tabla `pagos`
+--
+ALTER TABLE `pagos`
+  ADD PRIMARY KEY (`id_pagos`);
 
 --
 -- Indices de la tabla `reparaciones`
@@ -193,10 +211,16 @@ ALTER TABLE `estado_rep`
   MODIFY `id_est` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT de la tabla `pagos`
+--
+ALTER TABLE `pagos`
+  MODIFY `id_pagos` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `reparaciones`
 --
 ALTER TABLE `reparaciones`
-  MODIFY `id_rep` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_rep` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
