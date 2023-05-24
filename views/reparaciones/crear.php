@@ -15,7 +15,7 @@ include('../../app/controllers/reparaciones/consulta_estado.php');
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">FORMULARIO PARA AGREGAR CLIENTES</h1>
+          <h1 class="m-0">FORMULARIO PARA AGREGAR REPARACIONES</h1>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -216,7 +216,7 @@ include('../../app/controllers/reparaciones/consulta_estado.php');
                       <div class="col-md-8">
                         <div class="form-group">
                           <label for="">Descripción de la falla:</label>
-                          <textarea name="falla" cols="30" rows="3" class="form-control" placeholder="Escriba la descripcion de la falla"></textarea>
+                          <textarea name="falla" cols="30" rows="3" class="form-control" placeholder="Escriba la descripcion de la falla" required></textarea>
                         </div>
                       </div>
                       <div class="col-md-4">

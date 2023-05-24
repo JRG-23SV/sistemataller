@@ -43,100 +43,76 @@ include('../../app/controllers/reparaciones/mostrar_reparaciones.php');
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form action="../../app/controllers/reparaciones/crear_reparaciones.php" method="post" enctype="multipart/form-data">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <input type="text" name="id_clientes" id="cliente_id" hidden>
-                                                    <label for="">Cliente:</label>
-                                                    <input type="text" name="cliente" class="form-control" value="<?php echo $nombre?> <?php echo $apellido?>" disabled>
-                                                </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <input type="text" name="id_clientes" id="cliente_id" hidden>
+                                                <label for="">Cliente:</label>
+                                                <input type="text" name="cliente" class="form-control" value="<?php echo $nombre ?> <?php echo $apellido ?>" disabled>
                                             </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="">Marca del Vehiculo:</label>
-                                                    <div style="display: flex">
-                                                        <input type="text" name="marca" class="form-control" value="<?php echo $marca?>" disabled>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="">Modelo del Vehiculo:</label>
-                                                    <input type="text" name="modelo" class="form-control" value="<?php echo $modelo?>" disabled>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="">Marca del Vehiculo:</label>
+                                                <div style="display: flex">
+                                                    <input type="text" name="marca" class="form-control" value="<?php echo $marca ?>" disabled>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <input type="text" id="id_producto" hidden>
-                                                    <label for="">Placa del Vehiculo:</label>
-                                                    <input type="text" name="placa" class="form-control" value="<?php echo $placa?>" disabled>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="">Fecha:</label>
-                                                    <input type="date" class="form-control" name="fecha" value="<?php echo $fecharep?>" disabled>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="">Imagen de la falla:</label>
-                                                    <input type="file" name="image" class="form-control" id="file">
-                                                    <br>
-                                                    <output id="list"></output>
-                                                    <script>
-                                                        function archivo(evt) {
-                                                            var files = evt.target.files; // FileList object
-                                                            // Obtenemos la imagen del campo "file".
-                                                            for (var i = 0, f; f = files[i]; i++) {
-                                                                //Solo admitimos imágenes.
-                                                                if (!f.type.match('image.*')) {
-                                                                    continue;
-                                                                }
-                                                                var reader = new FileReader();
-                                                                reader.onload = (function(theFile) {
-                                                                    return function(e) {
-                                                                        // Insertamos la imagen
-                                                                        document.getElementById("list").innerHTML = ['<img class="thumb thumbnail" src="', e.target.result, '" width="100%" title="', escape(theFile.name), '"/>'].join('');
-                                                                    };
-                                                                })(f);
-                                                                reader.readAsDataURL(f);
-                                                            }
-                                                        }
-                                                        document.getElementById('file').addEventListener('change', archivo, false);
-                                                    </script>
-                                                </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="">Modelo del Vehiculo:</label>
+                                                <input type="text" name="modelo" class="form-control" value="<?php echo $modelo ?>" disabled>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <div class="form-group">
-                                                    <label for="">Descripción de la falla:</label>
-                                                    <textarea name="falla" cols="30" rows="3" class="form-control" value="<?php echo $fallarep?>" disabled></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <select name="estado" id="" class="form-control" hidden>
-                                                        <?php
-                                                        foreach ($datos_estado as $dato_estado) { ?>
-                                                            <option value="<?php echo $dato_estado['id_est']; ?>"><?php echo $dato_estado['estado']; ?></option>
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <input type="text" id="id_producto" hidden>
+                                                <label for="">Placa del Vehiculo:</label>
+                                                <input type="text" name="placa" class="form-control" value="<?php echo $placa ?>" disabled>
                                             </div>
                                         </div>
-                                        <hr>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-primary">Guardar</button>
-                                            <a href="reparaciones.php" class="btn btn-secondary">Cancelar</a>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="">Fecha:</label>
+                                                <input type="date" class="form-control" name="fecha" value="<?php echo $fecharep ?>" disabled>
+                                            </div>
                                         </div>
-                                    </form>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">Imagen de la falla:</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label for="">Descripción de la falla:</label>
+                                                <textarea name="falla" cols="30" rows="3" class="form-control" disabled><?php echo $fallarep ?></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <center>
+                                                    <img src="<?php echo $URL . "/views/reparaciones/img_reparaciones/" . $dato_reparaciones['imagen']; ?>" width="100%" height="100%" alt="asdf">
+                                                </center>
+                                                <select name="estado" id="" class="form-control" hidden>
+                                                    <?php
+                                                    foreach ($datos_estado as $dato_estado) { ?>
+                                                        <option value="<?php echo $dato_estado['id_est']; ?>"><?php echo $dato_estado['estado']; ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <a href="reparaciones.php" class="btn btn-secondary">Regresar</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -4,6 +4,8 @@ include('../../app/config.php');
 include('../../layout/sesion.php');
 include('../../layout/part1.php');
 include('../../app/controllers/reparaciones/listado_reparaciones.php');
+include('../../app/controllers/reparaciones/consulta_clientes.php');
+include('../../app/controllers/reparaciones/consulta_estado.php');
 
 ?>
 
@@ -69,9 +71,49 @@ include('../../app/controllers/reparaciones/listado_reparaciones.php');
                   <td><?php echo $dato_reparaciones['fallas']; ?></td>
                   <td><?php echo $dato_reparaciones['fecha_ingreso']; ?></td>
                   <td>
-                    <img src="<?php echo $URL."/views/reparaciones/img_reparaciones/".$dato_reparaciones['imagen']; ?>" width="150px" alt="asdf">
+                    <center>
+                      <img src="<?php echo $URL . "/views/reparaciones/img_reparaciones/" . $dato_reparaciones['imagen']; ?>" width="150px" height="100px" alt="asdf">
+                    </center>
                   </td>
-                  <td><?php echo $dato_reparaciones['estado'];?></td>
+                  <td>
+                    <center>
+                      <button class="btn btn-secondary"><?php echo $dato_reparaciones['estado']; ?></button>
+                    </center>
+                    <hr>
+                    <center>
+                      <button class="btn" data-toggle="modal" data-target="#modal-cambiar-estado"><i class="fa-solid fa-repeat"></i></button>
+
+                      <div class="modal fade" id="modal-cambiar-estado">
+                        <div class="modal-dialog modal-xs">
+                          <div class="modal-content modal-primary">
+                            <div class="modal-header">
+                              <h4 class="modal-title">Cambiar estado...</h4>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form action="../../app/controllers/reparaciones/cambiar_estado.php" method="post">
+                              <input type="text" name="id_clientes" id="cliente_id" hidden>
+                                <select name="estado" id="" class="form-control">
+                                  <?php
+                                  foreach ($datos_estado as $dato_estado) { ?>
+                                    <option value="<?php echo $dato_estado['id_est']; ?>"><?php echo $dato_estado['estado']; ?></option>
+                                  <?php
+                                  }
+                                  ?>
+                                </select>
+                                <hr>
+                                <button type="submit" class="btn btn-secondary">CAMBIAR</button>
+                              </form>
+                            </div>
+                          </div>
+                          <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                      </div>
+                    </center>
+                  </td>
                   <td>
                     <center>
                       <div class="btn-group">
@@ -81,7 +123,6 @@ include('../../app/controllers/reparaciones/listado_reparaciones.php');
                       </div>
                       <hr>
                       <a href="generar_factura.php" type="button" class="btn btn-primary"><i class="fa-sharp fa-solid fa-cash-register"></i> Generar Factura</a>
-
                     </center>
                   </td>
                 </tr>
