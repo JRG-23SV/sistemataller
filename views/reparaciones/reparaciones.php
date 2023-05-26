@@ -4,7 +4,6 @@ include('../../app/config.php');
 include('../../layout/sesion.php');
 include('../../layout/part1.php');
 include('../../app/controllers/reparaciones/listado_reparaciones.php');
-include('../../app/controllers/reparaciones/consulta_clientes.php');
 include('../../app/controllers/reparaciones/consulta_estado.php');
 
 ?>
@@ -81,9 +80,9 @@ include('../../app/controllers/reparaciones/consulta_estado.php');
                     </center>
                     <hr>
                     <center>
-                      <button class="btn" data-toggle="modal" data-target="#modal-cambiar-estado"><i class="fa-solid fa-repeat"></i></button>
+                      <button class="btn" data-toggle="modal" data-target="#modal-cambiar-estado<?php echo $reparaciones_id; ?>"><i class="fa-solid fa-repeat"></i></button>
 
-                      <div class="modal fade" id="modal-cambiar-estado">
+                      <div class="modal fade" id="modal-cambiar-estado<?php echo $reparaciones_id ?>">
                         <div class="modal-dialog modal-xs">
                           <div class="modal-content modal-primary">
                             <div class="modal-header">
@@ -94,11 +93,16 @@ include('../../app/controllers/reparaciones/consulta_estado.php');
                             </div>
                             <div class="modal-body">
                               <form action="../../app/controllers/reparaciones/cambiar_estado.php" method="post">
-                              <input type="text" name="id_clientes" id="cliente_id" hidden>
-                                <select name="estado" id="" class="form-control">
+                                <input type="text" name="id_repara" id="repara_id" value="<?php echo $reparaciones_id; ?>" hidden>
+                                <select name="estado_reparacion" id="" class="form-control">
                                   <?php
-                                  foreach ($datos_estado as $dato_estado) { ?>
-                                    <option value="<?php echo $dato_estado['id_est']; ?>"><?php echo $dato_estado['estado']; ?></option>
+                                  foreach ($datos_estado as $dato_estado) {
+                                    $tabla_estado = $dato_estado['estado'];
+                                    $id_estado = $dato_estado['id_est'];
+                                  ?>
+                                    <option value="<?php echo $id_estado; ?>" <?php if ($tabla_estado == $dato_reparaciones['estado_rep']) { ?> selected="selected" <?php } ?>>
+                                      <?php echo $tabla_estado; ?>
+                                    </option>
                                   <?php
                                   }
                                   ?>
