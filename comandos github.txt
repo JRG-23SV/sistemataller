@@ -2,4 +2,3 @@ git add .
 git commit -m "Mensaje tuyo"
 git push origin main
 
-recordatorio "seguir con el boton de cambio de estado"
