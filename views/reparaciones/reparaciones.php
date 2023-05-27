@@ -98,7 +98,7 @@ include('../../app/controllers/reparaciones/consulta_estado.php');
                     ?>
                     <hr>
                     <center>
-                      <button class="btn" data-toggle="modal" data-target="#modal-cambiar-estado<?php echo $reparaciones_id; ?>"><i class="fa-solid fa-repeat"></i></button>
+                      <button class="btn" data-toggle="modal" data-target="#modal-cambiar-estado<?php echo $reparaciones_id; ?>"><i class="fa-solid fa-repeat fa-spin"></i></button>
 
                       <div class="modal fade" id="modal-cambiar-estado<?php echo $reparaciones_id ?>">
                         <div class="modal-dialog modal-xs">
