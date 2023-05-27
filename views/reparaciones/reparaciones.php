@@ -75,9 +75,27 @@ include('../../app/controllers/reparaciones/consulta_estado.php');
                     </center>
                   </td>
                   <td>
+                    <?php
+                    if ($dato_reparaciones['estado'] == "Inactivo"){
+                    ?>
                     <center>
                       <button class="btn btn-secondary"><?php echo $dato_reparaciones['estado']; ?></button>
                     </center>
+                    <?php
+                    } else if ($dato_reparaciones['estado'] == "En proceso"){
+                    ?>
+                    <center>
+                      <button class="btn btn-info"><?php echo $dato_reparaciones['estado']; ?></button>
+                    </center>
+                    <?php
+                    } else {
+                    ?>
+                    <center>
+                      <button class="btn btn-success"><?php echo $dato_reparaciones['estado']; ?></button>
+                    </center>
+                    <?php
+                    }
+                    ?>
                     <hr>
                     <center>
                       <button class="btn" data-toggle="modal" data-target="#modal-cambiar-estado<?php echo $reparaciones_id; ?>"><i class="fa-solid fa-repeat"></i></button>
@@ -100,7 +118,7 @@ include('../../app/controllers/reparaciones/consulta_estado.php');
                                     $tabla_estado = $dato_estado['estado'];
                                     $id_estado = $dato_estado['id_est'];
                                   ?>
-                                    <option value="<?php echo $id_estado; ?>" <?php if ($tabla_estado == $dato_reparaciones['estado_rep']) { ?> selected="selected" <?php } ?>>
+                                    <option value="<?php echo $id_estado; ?>" <?php if ($tabla_estado == $dato_reparaciones['estado']) { ?> selected="selected" <?php } ?> style="font-size: large; width: 200px; padding: 5px;">
                                       <?php echo $tabla_estado; ?>
                                     </option>
                                   <?php

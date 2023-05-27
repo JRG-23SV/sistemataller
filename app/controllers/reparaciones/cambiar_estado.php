@@ -13,13 +13,13 @@ $sentence->bindParam('estado_rep',$estadoreparacion);
 $sentence->bindParam('id_rep',$reparaciones_id);
 if ($sentence->execute()){
 session_start();
-    $_SESSION['mensaje'] = "Listo, usuario actualizado exitosamente :D";
+    $_SESSION['mensaje'] = "Estado actualizado exitosamente :D";
     $_SESSION['icono'] = "success";
     header('Location: '.$URL.'../../../sistemataller/views/reparaciones/reparaciones.php');
 } else {
     //echo "Error, las contraseñas no coinciden";
     session_start();
-    $_SESSION['mensaje'] = "Error, las contraseñas no coinciden";
+    $_SESSION['mensaje'] = "Error, no se pudo actualizar el estado";
     $_SESSION['icono'] = "error";
     header('Location: '.$URL.'../../../sistemataller/views/reparaciones/reparaciones.php');
 }
