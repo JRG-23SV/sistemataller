@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-05-2023 a las 09:11:17
+-- Tiempo de generación: 28-05-2023 a las 20:12:44
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -43,8 +43,8 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id`, `nombre`, `apellido`, `marca_vehiculo`, `modelo_vehiculo`, `placa_vehiculo`, `telefono`, `fecha_registro`) VALUES
-(1, 'pedro', 'parker', 'Toyota', 'Tacoma', 'P7889A8', '7578-4132', '2023-04-11'),
-(2, 'michael', 'jordan', 'toyota', 'yaris', 'P78ASD5', '6969-7777', '2023-04-11'),
+(1, 'Pedro', 'Parker', 'Toyota', 'Tacoma', 'P7889A8', '7578-4132', '2023-04-11'),
+(2, 'Michael', 'Jordan', 'Toyota', 'Yaris', 'P78ASD5', '6969-7777', '2023-04-11'),
 (5, 'Luis', 'Ayala', 'Toyota', 'Yaris', 'P7845A0', '7548-9875', '2023-05-03');
 
 -- --------------------------------------------------------
@@ -70,14 +70,16 @@ INSERT INTO `estado_rep` (`id_est`, `estado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pagos`
+-- Estructura de tabla para la tabla `facturacion`
 --
 
-CREATE TABLE `pagos` (
-  `id_pagos` int(11) NOT NULL,
-  `id_rep` int(11) NOT NULL,
-  `reprealizada` varchar(255) NOT NULL,
-  `valorpago` varchar(255) NOT NULL
+CREATE TABLE `facturacion` (
+  `id_factura` int(11) NOT NULL,
+  `id_reparacion` int(11) NOT NULL,
+  `cliente` varchar(150) NOT NULL,
+  `descripcionrepa` varchar(255) NOT NULL,
+  `fecha_reparacion` date NOT NULL,
+  `pagototal` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -100,8 +102,8 @@ CREATE TABLE `reparaciones` (
 --
 
 INSERT INTO `reparaciones` (`id_rep`, `id_clientes`, `fallas`, `fecha_ingreso`, `imagen`, `estado_rep`) VALUES
-(13, 2, 'Le falta aceite y una limpiadita gg', '2023-05-22', '2023-05-22-12-23-50__carrochocado.jpg', 4),
-(14, 1, 'Se le calló el escape al señor', '2023-05-12', '2023-05-22-12-35-08__escaperoto.jpg', 4);
+(19, 1, 'Una lavadita y como nuevo gg', '2023-05-25', '2023-05-28-09-07-47__carrochocado.jpg', 6),
+(20, 2, 'Escape roto, salio malo de fabrica', '2023-05-23', '2023-05-28-11-17-56__escaperoto.jpg', 6);
 
 -- --------------------------------------------------------
 
@@ -144,7 +146,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `username`, `password`, `correo`, `token`, `id_rol`, `fecha_creacion`, `fecha_actualizacion`) VALUES
-(6, 'manuel', '$2y$10$L9.5ZZJcABf2pclekEJ3d.1906RocPgAGK7kUrh2/o9hpeZux2GVC', 'manuel@gmail.com', '', 1, '2023-04-09 23:12:11', '2023-05-13 17:11:43'),
+(6, 'manuel', '$2y$10$T5ZTyE9xsCAsUHXD2BV6xe0eE.tN/1L.smMf2mcVC8.SY.3cdaJZq', 'manuel@gmail.com', '', 1, '2023-04-09 23:12:11', '2023-05-27 09:13:04'),
 (7, 'carlos', '$2y$10$YPyqPp6RBcwSffwnlgQxMuAl6pHYoC5yy0PXJWKOSDIXpHl4KPaPC', 'carlos@gmail.com', '', 2, '2023-04-09 23:32:02', '0000-00-00 00:00:00'),
 (16, 'fabian', '$2y$10$BGrWCIlpRgu.NFF4rivOtutHTFD1i.Ipjjl3p/WHsdS5gekNkAPh2', 'fabian@gmail.com', '', 2, '2023-04-11 16:17:05', '2023-05-02 21:02:05'),
 (17, 'natividad', '$2y$10$XrZoAx5RrcDNP2zSY2E5XuczJpzn1c7ZfQBuTSB0d/d3fehLIMqPu', 'natividad@gmail.com', '', 1, '2023-04-11 21:07:52', '0000-00-00 00:00:00'),
@@ -168,10 +170,11 @@ ALTER TABLE `estado_rep`
   ADD PRIMARY KEY (`id_est`);
 
 --
--- Indices de la tabla `pagos`
+-- Indices de la tabla `facturacion`
 --
-ALTER TABLE `pagos`
-  ADD PRIMARY KEY (`id_pagos`);
+ALTER TABLE `facturacion`
+  ADD PRIMARY KEY (`id_factura`),
+  ADD KEY `id_reparacion` (`id_reparacion`);
 
 --
 -- Indices de la tabla `reparaciones`
@@ -211,16 +214,16 @@ ALTER TABLE `estado_rep`
   MODIFY `id_est` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de la tabla `pagos`
+-- AUTO_INCREMENT de la tabla `facturacion`
 --
-ALTER TABLE `pagos`
-  MODIFY `id_pagos` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `facturacion`
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `reparaciones`
 --
 ALTER TABLE `reparaciones`
-  MODIFY `id_rep` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_rep` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -237,6 +240,12 @@ ALTER TABLE `usuario`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `facturacion`
+--
+ALTER TABLE `facturacion`
+  ADD CONSTRAINT `facturacion_ibfk_1` FOREIGN KEY (`id_reparacion`) REFERENCES `reparaciones` (`id_rep`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `reparaciones`

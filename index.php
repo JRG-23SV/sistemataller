@@ -118,7 +118,7 @@ Swal.fire({
               <div class="icon">
               <i class="fa-solid fa-hand-holding-dollar"></i>
               </div>
-              <a href="<?php echo $URL?>/views/reparaciones/reparaciones.php" class="small-box-footer">Mas detalles <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?php echo $URL?>/views/facturacion/facturacion.php" class="small-box-footer">Mas detalles <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>  
           <!-- ./col -->

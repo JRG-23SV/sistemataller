@@ -76,23 +76,23 @@ include('../../app/controllers/reparaciones/consulta_estado.php');
                   </td>
                   <td>
                     <?php
-                    if ($dato_reparaciones['estado'] == "Inactivo"){
+                    if ($dato_reparaciones['estado'] == "Inactivo") {
                     ?>
-                    <center>
-                      <button class="btn btn-secondary"><?php echo $dato_reparaciones['estado']; ?></button>
-                    </center>
+                      <center>
+                        <button class="btn btn-secondary"><?php echo $dato_reparaciones['estado']; ?></button>
+                      </center>
                     <?php
-                    } else if ($dato_reparaciones['estado'] == "En proceso"){
+                    } else if ($dato_reparaciones['estado'] == "En proceso") {
                     ?>
-                    <center>
-                      <button class="btn btn-info"><?php echo $dato_reparaciones['estado']; ?></button>
-                    </center>
+                      <center>
+                        <button class="btn btn-info"><?php echo $dato_reparaciones['estado']; ?></button>
+                      </center>
                     <?php
                     } else {
                     ?>
-                    <center>
-                      <button class="btn btn-success"><?php echo $dato_reparaciones['estado']; ?></button>
-                    </center>
+                      <center>
+                        <button class="btn btn-success"><?php echo $dato_reparaciones['estado']; ?></button>
+                      </center>
                     <?php
                     }
                     ?>
@@ -100,7 +100,7 @@ include('../../app/controllers/reparaciones/consulta_estado.php');
                     <center>
                       <button class="btn" data-toggle="modal" data-target="#modal-cambiar-estado<?php echo $reparaciones_id; ?>"><i class="fa-solid fa-repeat fa-spin"></i></button>
 
-                      <div class="modal fade" id="modal-cambiar-estado<?php echo $reparaciones_id ?>">
+                      <div class="modal fade" id="modal-cambiar-estado<?php echo $reparaciones_id; ?>">
                         <div class="modal-dialog modal-xs">
                           <div class="modal-content modal-primary">
                             <div class="modal-header">
@@ -145,17 +145,74 @@ include('../../app/controllers/reparaciones/consulta_estado.php');
                       </div>
                       <hr>
                       <?php
-                      if ($dato_reparaciones['estado'] == "Inactivo"){
+                      if ($dato_reparaciones['estado'] == "Inactivo") {
                       ?>
-                      <a href="#" type="button" class="btn btn-secondary"><i class="fa-sharp fa-solid fa-cash-register"></i> Generar Factura</a>
+                        <a href="#" type="button" class="btn btn-secondary"><i class="fa-sharp fa-solid fa-cash-register"></i> Generar Factura</a>
                       <?php
-                      } else if ($dato_reparaciones['estado'] == "En proceso"){
+                      } else if ($dato_reparaciones['estado'] == "En proceso") {
                       ?>
-                      <a href="#" type="button" class="btn btn-secondary"><i class="fa-sharp fa-solid fa-cash-register"></i> Generar Factura</a>
+                        <a href="#" type="button" class="btn btn-secondary"><i class="fa-sharp fa-solid fa-cash-register"></i> Generar Factura</a>
                       <?php
                       } else {
                       ?>
-                      <a href="generar_factura.php" type="button" class="btn btn-primary"><i class="fa-sharp fa-solid fa-cash-register"></i> Generar Factura</a>
+                        <a href="" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-generar-factura<?php echo $reparaciones_id; ?>"><i class="fa-sharp fa-solid fa-cash-register"></i> Generar Factura</a>
+
+                        <div class="modal fade" id="modal-generar-factura<?php echo $reparaciones_id; ?>">
+                          <div class="modal-dialog modal-lg">
+                            <div class="modal-content modal-primary">
+                              <div class="modal-header" style="background-color: #007bff;color: white;">
+                                <h4 class="modal-title">Creando factura</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <form action="../../app/controllers/facturacion/crear_factura.php" method="post">
+                                  <div class="row">
+                                    <div class="col-md-4">
+                                      <div class="form-group">
+                                        <input type="text" name="id_repara" id="repara_id" value="<?php echo $reparaciones_id; ?>" hidden>
+                                        <label for="">Cliente:</label>
+                                        <input type="text" name="clientefact" id="clientefact" class="form-control" value="<?php echo $dato_reparaciones['nombre']; ?> <?php echo $dato_reparaciones['apellido']; ?>">
+                                      </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                      <div class="form-group">
+                                        <label for="">Descripcion de la reparacion:</label>
+                                        <textarea name="repdescrip" cols="30" rows="3" class="form-control" placeholder="Describa la reparacion realizada"></textarea>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-md-4">
+                                      <div class="form-group">
+                                        <label for="">Fecha de reparación:</label>
+                                        <input type="date" class="form-control" name="fechafact">
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <div class="form-group">
+                                        <br>
+                                        <label for="">Monto a pagar por la reparación: $</label>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <div class="form-group">
+                                        <br>
+                                        <input type="text" name="montofact" id="monto" class="form-control">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <hr>
+                                  <button type="submit" class="btn btn-primary">CREAR</button>
+                                  <a href="reparaciones.php" type="button" class="btn btn-secondary">REGRESAR</a>
+                                </form>
+                              </div>
+                            </div>
+                            <!-- /.modal-content -->
+                          </div>
+                          <!-- /.modal-dialog -->
+                        </div>
                       <?php
                       }
                       ?>
