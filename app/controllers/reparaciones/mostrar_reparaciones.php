@@ -9,6 +9,7 @@ $query_reparaciones->execute();
 $datos_reparaciones = $query_reparaciones->fetchAll(fetch_style: PDO::FETCH_ASSOC);
 
 foreach ($datos_reparaciones as $dato_reparaciones){
+    $idrep = $dato_reparaciones['id_rep'];
     $nombre = $dato_reparaciones['nombre'];
     $apellido = $dato_reparaciones['apellido'];
     $marca = $dato_reparaciones['marca_vehiculo'];
