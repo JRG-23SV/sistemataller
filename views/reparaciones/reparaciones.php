@@ -144,7 +144,21 @@ include('../../app/controllers/reparaciones/consulta_estado.php');
                         <a href="eliminar.php?id=<?php echo $reparaciones_id; ?>" type="button" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                       </div>
                       <hr>
+                      <?php
+                      if ($dato_reparaciones['estado'] == "Inactivo"){
+                      ?>
+                      <a href="#" type="button" class="btn btn-secondary"><i class="fa-sharp fa-solid fa-cash-register"></i> Generar Factura</a>
+                      <?php
+                      } else if ($dato_reparaciones['estado'] == "En proceso"){
+                      ?>
+                      <a href="#" type="button" class="btn btn-secondary"><i class="fa-sharp fa-solid fa-cash-register"></i> Generar Factura</a>
+                      <?php
+                      } else {
+                      ?>
                       <a href="generar_factura.php" type="button" class="btn btn-primary"><i class="fa-sharp fa-solid fa-cash-register"></i> Generar Factura</a>
+                      <?php
+                      }
+                      ?>
                     </center>
                   </td>
                 </tr>
