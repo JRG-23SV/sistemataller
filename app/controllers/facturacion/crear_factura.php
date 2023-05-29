@@ -10,9 +10,19 @@ $gastoreparacion = $_POST['gastorep'];
 $montoreparacion = $_POST['montorep'];
 $montototal = $gastoreparacion + $montoreparacion;
 
+# Incluyendo librerias necesarias #
+require "../../../views/facturacion/ticket/code128.php";
+
+  # Codigo de barras #
+  $codigogenerado = strtoupper(uniqid('COD'));
+
+  $codebarra = $codigogenerado;
+
+  echo ($codigogenerado);
+
 $sentence = $pdo->prepare("INSERT INTO facturacion
-        (id_reparacion, cliente, descripcionrepa, fecha_reparacion, gastorep, montorep, pagototal)
-VALUES (:id_reparacion, :cliente, :descripcionrepa, :fecha_reparacion, :gastorep, :montorep, :pagototal)");
+        (id_reparacion, cliente, descripcionrepa, fecha_reparacion, gastorep, montorep, pagototal, codebarra)
+VALUES (:id_reparacion, :cliente, :descripcionrepa, :fecha_reparacion, :gastorep, :montorep, :pagototal, :codebarra)");
 
 $sentence->bindParam(':id_reparacion', $idrepara);
 $sentence->bindParam(':cliente', $clientefactura);
@@ -21,6 +31,7 @@ $sentence->bindParam(':fecha_reparacion', $fecharepa);
 $sentence->bindParam(':gastorep', $gastoreparacion);
 $sentence->bindParam(':montorep', $montoreparacion);
 $sentence->bindParam(':pagototal', $montototal);
+$sentence->bindParam(':codebarra', $codebarra);
 
 if ($sentence->execute()) {
     session_start();

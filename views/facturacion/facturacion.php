@@ -59,10 +59,10 @@ include('../../app/controllers/facturacion/listado_facturacion.php');
                         <td>
                             <center>
                                 <div class="btn-group">
-                                <a href="mostrar.php?id=<?php echo $pagos_id; ?>" type="button" class="btn btn-primary"><i class="fa fa-eye"></i> Generar Ticket</a>
+                                <a href="ticket/ticket.php?id=<?php echo $pagos_id; ?>" type="button" class="btn btn-primary" target="_blank"><i class="fa-sharp fa-solid fa-money-check-dollar"></i>  Generar Ticket</a>
                                 </div>
                                 <div class="btn-group">
-                                <a href="mostrar.php?id=<?php echo $pagos_id; ?>" type="button" class="btn btn-success"><i class="fa fa-eye"></i>Generar Factura</a>
+                                <a href="factura/factura.php?id=<?php echo $pagos_id; ?>" type="button" class="btn btn-success" target="_blank"><i class="fa-sharp fa-solid fa-sheet-plastic"></i>  Generar Factura</a>
                                 </div>
                                 <div class="btn-group">
                                 <a href="eliminar.php?id=<?php echo $pagos_id; ?>" type="button" class="btn btn-danger"><i class="fa fa-trash"></i></a>

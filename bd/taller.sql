@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-05-2023 a las 20:12:44
+-- Tiempo de generación: 29-05-2023 a las 07:52:48
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -79,8 +79,20 @@ CREATE TABLE `facturacion` (
   `cliente` varchar(150) NOT NULL,
   `descripcionrepa` varchar(255) NOT NULL,
   `fecha_reparacion` date NOT NULL,
-  `pagototal` decimal(10,2) NOT NULL
+  `gastorep` decimal(10,2) NOT NULL,
+  `montorep` decimal(10,2) NOT NULL,
+  `pagototal` decimal(10,2) NOT NULL,
+  `codebarra` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `facturacion`
+--
+
+INSERT INTO `facturacion` (`id_factura`, `id_reparacion`, `cliente`, `descripcionrepa`, `fecha_reparacion`, `gastorep`, `montorep`, `pagototal`, `codebarra`) VALUES
+(2, 20, 'Michael Jordan', 'asdfasdadasd', '2023-05-28', '74.35', '100.00', '174.35', 'COD647416BD45F51'),
+(3, 19, 'Pedro Parker', 'sdsadsdasdasd', '2023-05-28', '45.00', '90.00', '135.00', 'COD647416BD45F58'),
+(4, 19, 'Pedro Parker', 'wqedadasdsdaw', '2022-12-12', '44.00', '78.00', '122.00', 'COD647416BD45F57');
 
 -- --------------------------------------------------------
 
@@ -217,7 +229,7 @@ ALTER TABLE `estado_rep`
 -- AUTO_INCREMENT de la tabla `facturacion`
 --
 ALTER TABLE `facturacion`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `reparaciones`

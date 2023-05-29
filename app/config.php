@@ -15,6 +15,8 @@ try {
 
 date_default_timezone_set("America/El_Salvador");
 $fecha_hora = date('Y-m-d H:i:s');
+$fechaticket = date('d-m-Y');
+$horaticket = date('H:i');
 
 $host = $_SERVER['HTTP_HOST'];
 $ip = $_SERVER['SERVER_ADDR'];

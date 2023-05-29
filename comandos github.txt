@@ -1,3 +1,5 @@
 git add .
 git commit -m "Mensaje tuyo"
 git push origin main
+
+Faltan algunos detalles de la factura y los graficos en el index
