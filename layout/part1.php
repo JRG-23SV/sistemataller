@@ -173,7 +173,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo $URL ?>/views/reparaciones/reparaciones.php" class="nav-link ">
+                <a href="<?php echo $URL ?>/views/facturacion/facturacion.php" class="nav-link ">
                   <i class="fa-solid fa-money-bill-transfer nav-icon"></i>
                   <p>Listado de pagos</p>
                 </a>

@@ -6,17 +6,21 @@ $idrepara = $_POST['id_repara'];
 $clientefactura = $_POST['clientefact'];
 $descripcionrepa = $_POST['repdescrip'];
 $fecharepa = $_POST['fechafact'];
-$montofactura = $_POST['montofact'];
+$gastoreparacion = $_POST['gastorep'];
+$montoreparacion = $_POST['montorep'];
+$montototal = $gastoreparacion + $montoreparacion;
 
 $sentence = $pdo->prepare("INSERT INTO facturacion
-        (id_reparacion, cliente, descripcionrepa, fecha_reparacion, pagototal)
-        VALUES (:id_reparacion, :cliente, :descripcionrepa, :fecha_reparacion, :pagototal)");
+        (id_reparacion, cliente, descripcionrepa, fecha_reparacion, gastorep, montorep, pagototal)
+VALUES (:id_reparacion, :cliente, :descripcionrepa, :fecha_reparacion, :gastorep, :montorep, :pagototal)");
 
 $sentence->bindParam(':id_reparacion', $idrepara);
 $sentence->bindParam(':cliente', $clientefactura);
 $sentence->bindParam(':descripcionrepa', $descripcionrepa);
 $sentence->bindParam(':fecha_reparacion', $fecharepa);
-$sentence->bindParam(':pagototal', $montofactura);
+$sentence->bindParam(':gastorep', $gastoreparacion);
+$sentence->bindParam(':montorep', $montoreparacion);
+$sentence->bindParam(':pagototal', $montototal);
 
 if ($sentence->execute()) {
     session_start();

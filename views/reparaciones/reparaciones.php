@@ -173,7 +173,7 @@ include('../../app/controllers/reparaciones/consulta_estado.php');
                                       <div class="form-group">
                                         <input type="text" name="id_repara" id="repara_id" value="<?php echo $reparaciones_id; ?>" hidden>
                                         <label for="">Cliente:</label>
-                                        <input type="text" name="clientefact" id="clientefact" class="form-control" value="<?php echo $dato_reparaciones['nombre']; ?> <?php echo $dato_reparaciones['apellido']; ?>">
+                                        <input type="text" name="clientefact" id="clientefact" class="form-control" value="<?php echo $dato_reparaciones['nombre']; ?> <?php echo $dato_reparaciones['apellido']; ?>" readonly>
                                       </div>
                                     </div>
                                     <div class="col-md-8">
@@ -186,11 +186,16 @@ include('../../app/controllers/reparaciones/consulta_estado.php');
                                   <div class="row">
                                     <div class="col-md-4">
                                       <div class="form-group">
+                                        <br>
                                         <label for="">Fecha de reparación:</label>
                                         <input type="date" class="form-control" name="fechafact">
                                       </div>
                                     </div>
                                     <div class="col-md-4">
+                                      <div class="form-group">
+                                        <br>
+                                        <label for="" style="text-align: right;padding-left: 80px;">Gastos en repuestos: $</label>
+                                      </div>
                                       <div class="form-group">
                                         <br>
                                         <label for="">Monto a pagar por la reparación: $</label>
@@ -199,7 +204,11 @@ include('../../app/controllers/reparaciones/consulta_estado.php');
                                     <div class="col-md-4">
                                       <div class="form-group">
                                         <br>
-                                        <input type="text" name="montofact" id="monto" class="form-control">
+                                        <input type="text" name="gastorep" id="monto" class="form-control">
+                                      </div>
+                                      <div class="form-group">
+                                        <br>
+                                        <input type="text" name="montorep" id="monto" class="form-control">
                                       </div>
                                     </div>
                                   </div>

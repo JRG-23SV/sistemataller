@@ -6,6 +6,7 @@ include ('layout/part1.php');
 include ('app/controllers/usuarios/listado_users.php');
 include ('app/controllers/clientes/listado_clientes.php');
 include ('app/controllers/reparaciones/listado_reparaciones.php');
+include ('app/controllers/facturacion/listado_facturacion.php');
 
 if(isset($_SESSION['mensajebien'])){
   $uuuuser = $_SESSION['mensajebien'];?>
@@ -107,12 +108,12 @@ Swal.fire({
             <div class="small-box bg-teal">
               <div class="inner">
                 <?php
-                $contador_reparaciones = 0;
-                foreach($datos_reparaciones as $reparacion_dato){
-                  $contador_reparaciones = $contador_reparaciones + 1;
+                $contador_facturacion = 0;
+                foreach($datos_pagos as $pagos_dato){
+                  $contador_facturacion = $contador_facturacion + 1;
                 }
                 ?>
-                <h3><?php echo $contador_reparaciones;?></h3>
+                <h3><?php echo $contador_facturacion;?></h3>
                 <p><h4>Facturación</h4></p>
               </div>
               <div class="icon">

@@ -65,7 +65,7 @@ include('../../app/controllers/facturacion/listado_facturacion.php');
                                 <a href="mostrar.php?id=<?php echo $pagos_id; ?>" type="button" class="btn btn-success"><i class="fa fa-eye"></i>Generar Factura</a>
                                 </div>
                                 <div class="btn-group">
-                                <a href="mostrar.php?id=<?php echo $pagos_id; ?>" type="button" class="btn btn-danger"><i class="fa fa-eye"></i>Eliminar Pago</a>
+                                <a href="eliminar.php?id=<?php echo $pagos_id; ?>" type="button" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                 </div>
                             </center>
                         </td>
