@@ -172,6 +172,10 @@ include('../../app/controllers/reparaciones/consulta_estado.php');
                                     <div class="col-md-4">
                                       <div class="form-group">
                                         <input type="text" name="id_repara" id="repara_id" value="<?php echo $reparaciones_id; ?>" hidden>
+                                        <input type="text" name="marcavehi" id="marcavehi" value="<?php echo $dato_reparaciones['marca_vehiculo']; ?>" hidden>
+                                        <input type="text" name="modelovehi" id="modelovehi" value="<?php echo $dato_reparaciones['modelo_vehiculo']; ?>" hidden>
+                                        <input type="text" name="placavehi" id="placavehi" value="<?php echo $dato_reparaciones['placa_vehiculo']; ?>" hidden>
+                                        <input type="text" name="teleclient" id="teleclient" value="<?php echo $dato_reparaciones['telefono']; ?>" hidden>
                                         <label for="">Cliente:</label>
                                         <input type="text" name="clientefact" id="clientefact" class="form-control" value="<?php echo $dato_reparaciones['nombre']; ?> <?php echo $dato_reparaciones['apellido']; ?>" readonly>
                                       </div>

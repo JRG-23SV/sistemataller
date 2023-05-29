@@ -4,22 +4,22 @@ include('../../../app/config.php');
 
 $ticketid_get = $_GET['id'];
 
-$sql_pagoss = "SELECT * FROM facturacion, cliente WHERE id_factura = '$ticketid_get'";
+$sql_pagoss = "SELECT * FROM facturacion WHERE id_factura = '$ticketid_get'";
 $query_pagoss = $pdo->prepare($sql_pagoss);
 $query_pagoss->execute();
 $datos_pagoss = $query_pagoss->fetchAll(fetch_style: PDO::FETCH_ASSOC);
 
 foreach ($datos_pagoss as $dato_pagoss){
+    $clienteRep = $dato_pagoss['cliente'];
+    $marcaVeh = $dato_pagoss['marcaveh'];
+    $modelVeh = $dato_pagoss['modelveh'];
+    $placaVeh = $dato_pagoss['placaveh'];
+    $teleClient = $dato_pagoss['telefonoclient'];
     $codeBarra = $dato_pagoss['codebarra'];
     $descripRepa = $dato_pagoss['descripcionrepa'];
     $gastoRep = $dato_pagoss['gastorep'];
     $montoRep = $dato_pagoss['montorep'];
     $pagoTot = $dato_pagoss['pagototal'];
-    $clienteRep = $dato_pagoss['cliente'];
-    $marcaVeh = $dato_pagoss['marca_vehiculo'];
-    $modelVeh = $dato_pagoss['modelo_vehiculo'];
-    $placaVeh = $dato_pagoss['placa_vehiculo'];
-    $teleClient = $dato_pagoss['telefono'];
 
 }
 
