@@ -135,5 +135,6 @@ Swal.fire({
 <?php
 
 include ('layout/part2.php');
+include ('layout/mensaje.php');
 
 ?>

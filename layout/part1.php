@@ -187,6 +187,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <h1> </h1>
           </li>
           <li class="nav-item">
+            <a href="<?php echo $URL ?>/app/controllers/backupDB/descarga.php" class="nav-link bg-success">
+              <i class="nav-icon fa-solid fa-server"></i>
+              <p>
+                Respaldo BD
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="<?php echo $URL ?>/app/controllers/login/logout.php" class="nav-link bg-danger">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
