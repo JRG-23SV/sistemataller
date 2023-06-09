@@ -25,7 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!--sweet alert-->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!--ChartJS-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.min.js"></script>
+  <script src="<?php echo $URL; ?>/templates/AdminLTE-3.2.0/plugins/chart.js/Chart.min.js"></script>
 
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
